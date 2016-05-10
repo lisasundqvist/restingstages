@@ -1,4 +1,4 @@
-README
+##README
 
 This repository contains all of the necessary information to allow readers to reproduce the simulations carried out in Sundqvist et al. 2016.
 
