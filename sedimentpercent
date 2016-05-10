@@ -1,3 +1,5 @@
+```matlab
+
 clear all
 close all
 clc
@@ -92,5 +94,5 @@ axis([-5 80,0 800])
 errorbar(testpercent,mean(timeto90lost),CIerror,'kx','LineWidth',2.0)
 xlabel('% regenerated from sediment')
 ylabel('Seasons until 90% of alleles are lost')
-
+```
 
