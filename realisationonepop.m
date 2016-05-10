@@ -4,7 +4,6 @@ clc
 
 % Parameters and start values
 years = 800; % number of seasons
-%stats = 10; % number of runs to calculate statistics
 startsize = 90;% number of allels starting the two different strategies
 percentsediment = 0.25; % percent allels picked from the sediment
 startfrombloom = floor(startsize*(1-percentsediment)); % number of allels starting from last years bloom
@@ -23,8 +22,6 @@ pop2 = randsample(alleles,startsize,true); % starting population without resting
 yearsplot=1:years;
 endbloomplot1 = zeros(startsize,years);
 endbloomplot2 = zeros(startsize,years);
-% numberofalleles1 = zeros(stats,years);
-% numberofalleles2 = zeros(stats,years);
 sedimenttobloom = zeros(1,startfromsediment);
 
 % Calculations
