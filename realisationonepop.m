@@ -3,7 +3,7 @@ close all
 clc
 
 % Parameters and start values
-years = 800; % number of seasons
+seasons = 800; % number of seasons
 startsize = 90;% number of allels starting the two different strategies
 percentsediment = 0.25; % percent allels picked from the sediment
 startfrombloom = floor(startsize*(1-percentsediment)); % number of allels starting from last years bloom
@@ -19,14 +19,14 @@ pop1 = randsample(alleles,startsize,true); % starting population with resting st
 pop2 = randsample(alleles,startsize,true); % starting population without resting stages
 
 % Predefinitions
-yearsplot=1:years;
-endbloomplot1 = zeros(startsize,years);
-endbloomplot2 = zeros(startsize,years);
+seasonsplot=1:seasons;
+endbloomplot1 = zeros(startsize,seasons);
+endbloomplot2 = zeros(startsize,seasons);
 sedimenttobloom = zeros(1,startfromsediment);
 
 % Calculations
     for strategi = 1:2; % tests two life history strategies (forming and not forming resting cells)
-        for t = 1:years % number of seasons with one bloom in each
+        for t = 1:seasons % number of seasons with one bloom in each
             if strategi==1 % forming resting cells
                 
                 % save bloom
