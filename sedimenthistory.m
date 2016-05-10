@@ -21,7 +21,6 @@ for ii = 1:6 % history and k is changed within this loop
     sedimenttobloom = zeros(1,startfromsediment); % empty vector
     
     % Calculations
-    
     for statistic = 1:stats % number of simulation for statistic calculations
         
         % startvalues
