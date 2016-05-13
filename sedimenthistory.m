@@ -4,7 +4,7 @@ clc
 
 % Parameters
 startsize = 80; % number of allels starting the two different strategies
-stats = 10; % number of runs to calculate statistics
+stats = 1000; % number of runs to calculate statistics
 numberofalleles = 20;
 alleles = [1:numberofalleles]; % possible alleles
 percentsediment = 0.25; % percent allels picked from the sediment
@@ -72,15 +72,15 @@ for ii = 1:6 % history and k is changed within this loop
     ii % countdown
 end
 
-%CI regular
+% CI regular
 SE = std(timeto90lost)/sqrt(length(timeto90lost(:,1)));  % Standard Error
 CIerror = 1.9623*SE;
 CI = mean(timeto90lost)+CIerror;
 
-%CI bootstrap
-capable = @mean;                                       % Bootstrap parameter
-CIboot = bootci(2000,capable,timeto90lost);            % BCa confidence interval
-CIbooterror = mean(timeto90lost)-CIboot(1,:);
+% % CI bootstrap
+% capable = @mean;                                       % Bootstrap parameter
+% CIboot = bootci(2000,capable,timeto90lost);            % BCa confidence interval
+% CIbooterror = mean(timeto90lost)-CIboot(1,:);
 
 figure(1)
 set(gcf,'Color','w')
