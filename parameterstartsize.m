@@ -104,6 +104,6 @@ hold on
 errorbar(teststartsize,mean(timeto90lostcyst),CIerrorcyst,'bx','LineWidth',1.5)
 errorbar(teststartsize,mean(timeto90lostnocyst),CIerrornocyst,'rx','LineWidth',1.5)
 legend('With resting cells','Without resting cells')
-xlabel('Startsize')
+xlabel('Start size')
 ylabel('Seasons until 90% of alleles are lost')
 
