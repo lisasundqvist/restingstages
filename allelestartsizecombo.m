@@ -5,7 +5,7 @@ close all
 % Parameters and start values
 stats = 1000; % number of runs to calculate statistics
 percentsediment = 0.25; % percent allels picked from the sediment
-k = 0.3; % rate of decay in the exponetial curve from which the sediment alleles are drawn
+k = 0.3; % rate of decay in the exponential curve from which the sediment alleles are drawn
 history = 20; % the number of seasons back in time from which alleles can be regenerated
 testalleles = [10 40 80 120 160 200]; % number of different alleles in starting distribution
 teststartsize = [10 40 80 120 160 200]; % number of allels starting the two different strategies
