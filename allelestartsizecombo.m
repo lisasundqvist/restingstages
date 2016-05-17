@@ -7,10 +7,10 @@ stats = 1000; % number of runs to calculate statistics
 percentsediment = 0.25; % percent allels picked from the sediment
 k = 0.3; % rate of decay in the exponetial curve from which the sediment alleles are drawn
 history = 20; % the number of seasons back in time from which alleles can be regenerated
-testalleles = [10 40 80 120 160 200];
-teststartsize = [10 40 80 120 160 200];% number of allels starting the two different strategies
+testalleles = [10 40 80 120 160 200]; % number of different alleles in starting distribution
+teststartsize = [10 40 80 120 160 200]; % number of allels starting the two different strategies
 
-for ii = 1:6 % startsize is changed within this loop
+for ii = 1:6 % startsize and alleles are changed within this loop
     
     startsize = teststartsize(ii); % startsize
         
