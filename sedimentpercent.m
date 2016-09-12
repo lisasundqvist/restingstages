@@ -88,7 +88,7 @@ set(gcf,'Color','w')
 set(gca,'linewidth',2.0,'fontsize',14,'fontname','arial','fontweight','bold','color','w')
 hold on
 set(gca,'xtick',testpercent)
-axis([-5 80,0 700])
+axis([-5 80,0 1400])
 errorbar(testpercent,mean(timetofixation),CIerror,'kx','LineWidth',2.0)
 xlabel('% regenerated from sediment')
 ylabel('Seasons until fixation')
