@@ -87,7 +87,7 @@ set(gcf,'Color','w')
 set(gca,'linewidth',2.0,'fontsize',14,'fontname','arial','fontweight','bold','color','w')
 hold on
 set(gca,'xtick',testhistory)
-axis([-5 130,0 2000])
+axis([-5 130,0 4500])
 errorbar(testhistory,mean(timetofixation),CIerror,'kx','LineWidth',2.0)
 xlabel('Seasons back in sediment')
 ylabel('Seasons until fixation')
