@@ -33,7 +33,7 @@ for ii = 1:6 % history and k is changed within this loop
             sediment(i,:) = randsample(alleles,startsize,true); % building up a starting sediment
         end
         
-        while numel(unique(endbloom))>0.1*numberofalleles
+        while numel(unique(endbloom))>1
             
             % save bloom
             endbloom = pop;
@@ -65,7 +65,7 @@ for ii = 1:6 % history and k is changed within this loop
             end
             
             t = t+1;% calculates the number of times whithin the while loop
-            timeto90lost(statistic,ii) = t; % collects the result number of seasons until 90% of original allels are lost
+            timetofixation(statistic,ii) = t; % collects the result number of seasons until 90% of original allels are lost
             
         end
     end
@@ -73,14 +73,14 @@ for ii = 1:6 % history and k is changed within this loop
 end
 
 % CI regular
-SE = std(timeto90lost)/sqrt(length(timeto90lost(:,1)));  % Standard Error
+SE = std(timetofixation)/sqrt(length(timetofixation(:,1)));  % Standard Error
 CIerror = 1.9623*SE;
-CI = mean(timeto90lost)+CIerror;
+CI = mean(timetofixation)+CIerror;
 
 % % CI bootstrap
 % capable = @mean;                                       % Bootstrap parameter
-% CIboot = bootci(2000,capable,timeto90lost);            % BCa confidence interval
-% CIbooterror = mean(timeto90lost)-CIboot(1,:);
+% CIboot = bootci(2000,capable,timetofixation);            % BCa confidence interval
+% CIbooterror = mean(timetofixation)-CIboot(1,:);
 
 figure(1)
 set(gcf,'Color','w')
@@ -88,6 +88,6 @@ set(gca,'linewidth',2.0,'fontsize',14,'fontname','arial','fontweight','bold','co
 hold on
 set(gca,'xtick',testhistory)
 axis([-5 130,0 2000])
-errorbar(testhistory,mean(timeto90lost),CIerror,'kx','LineWidth',2.0)
+errorbar(testhistory,mean(timetofixation),CIerror,'kx','LineWidth',2.0)
 xlabel('Seasons back in sediment')
-ylabel('Seasons until 90% of alleles are lost')
+ylabel('Seasons until fixation')
