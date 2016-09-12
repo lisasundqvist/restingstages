@@ -40,7 +40,7 @@ for ii = 1:6 % startsize and alleles are changed within this loop
                 sediment(i,:) = randsample(alleles,startsize,true); % building up a starting sediment
             end
             
-            while numel(unique(endbloom1))>0.1*testalleles(ii) % Strategi 1, forming resting cells
+            while numel(unique(endbloom1))>1 % Strategi 1, forming resting cells
                 
                 % save bloom
                 endbloom1 = pop1;
@@ -69,7 +69,7 @@ for ii = 1:6 % startsize and alleles are changed within this loop
                 
             end
             
-            while numel(unique(endbloom2))>0.1*testalleles(ii) % Strategi 2, not forming resting cells
+            while numel(unique(endbloom2))>1 % Strategi 2, not forming resting cells
                 
                 % save bloom
                 endbloom2 = pop2;
@@ -111,4 +111,4 @@ errorbar(teststartsize,mean(timeto90lostcyst),CIerrorcyst,'bx','LineWidth',1.5)
 errorbar(teststartsize,mean(timeto90lostnocyst),CIerrornocyst,'rx','LineWidth',1.5)
 legend('With resting cells','Without resting cells')
 xlabel('Start size/number of alleles')
-ylabel('Seasons until 90% of alleles are lost')
+ylabel('Seasons until fixation')
