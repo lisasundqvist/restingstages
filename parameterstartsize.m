@@ -37,7 +37,7 @@ for ii = 1:5 % startsize is changed within this loop
         sediment(i,:) = randsample(alleles,startsize,true); % building up a starting sediment
         end
         
-        while numel(unique(endbloom1))>0.1*numberofalleles % Strategi 1, forming resting cells
+        while numel(unique(endbloom1))>1 % Strategi 1, forming resting cells
         
             % save bloom
             endbloom1 = pop1;
@@ -62,11 +62,11 @@ for ii = 1:5 % startsize is changed within this loop
             
             pop1(startfrombloom+1:startsize) = sedimenttobloom1; % adds allels to pop
             t = t+1;% calculates the number of times whithin this while loop
-            timeto90lostcyst(statistic,ii) = t; % collects the result number of seasons until 90% of original allels are lost
+            timetofixationcyst(statistic,ii) = t; % collects the result number of seasons until 90% of original allels are lost
             
         end
         
-        while numel(unique(endbloom2))>0.1*numberofalleles % Strategi 2, not forming resting cells
+        while numel(unique(endbloom2))>1% Strategi 2, not forming resting cells
             
             % save bloom
             endbloom2 = pop2;
@@ -77,7 +77,7 @@ for ii = 1:5 % startsize is changed within this loop
             % add allels from the privious bloom to the next bloom
             pop2 = randsample(endbloom2,startsize,true);
             tt = tt+1; % calculates the number of times whithin this while loop
-            timeto90lostnocyst(statistic,ii) = tt; % collects the result number of seasons until 90% of original allels are lost
+            timetofixationnocyst(statistic,ii) = tt; % collects the result number of seasons until 90% of original allels are lost
             
         end
     end
@@ -85,25 +85,25 @@ for ii = 1:5 % startsize is changed within this loop
 end
 
 %CI regular
-SEcyst = std(timeto90lostcyst)/sqrt(length(timeto90lostcyst(:,1)));               % Standard Error
-SEnocyst = std(timeto90lostnocyst)/sqrt(length(timeto90lostnocyst(:,1)));         % Standard Error
+SEcyst = std(timetofixationcyst)/sqrt(length(timetofixationcyst(:,1)));               % Standard Error
+SEnocyst = std(timetofixationnocyst)/sqrt(length(timetofixationnocyst(:,1)));         % Standard Error
 CIerrorcyst = 1.9623*SEcyst;
 CIerrornocyst = 1.9623*SEnocyst;
 
 % %CI bootstrap
 % capable = @mean;                                        % Bootstrap parameter
-% CIbootcyst = bootci(2000,capable,timeto90lostcyst);            % BCa confidence interval
+% CIbootcyst = bootci(2000,capable,timetofixationcyst);            % BCa confidence interval
 % CIbooterrorcyst = mean(timeto90lostcyst)-CIbootcyst(1,:);
-% CIbootnocyst = bootci(2000,capable,timeto90lostnocyst);            % BCa confidence interval
+% CIbootnocyst = bootci(2000,capable,timetofixationnocyst);            % BCa confidence interval
 
 figure(1)
 set(gcf,'Color','w')
 set(gca,'linewidth',2.0,'fontsize',14,'fontname','arial','fontweight','bold','color','w')
 set(gca,'xtick',teststartsize)
 hold on
-errorbar(teststartsize,mean(timeto90lostcyst),CIerrorcyst,'bx','LineWidth',1.5)
-errorbar(teststartsize,mean(timeto90lostnocyst),CIerrornocyst,'rx','LineWidth',1.5)
+errorbar(teststartsize,mean(timetofixationcyst),CIerrorcyst,'bx','LineWidth',1.5)
+errorbar(teststartsize,mean(timetofixationnocyst),CIerrornocyst,'rx','LineWidth',1.5)
 legend('With resting cells','Without resting cells')
 xlabel('Start size')
-ylabel('Seasons until 90% of alleles are lost')
+ylabel('Seasons until fixation')
 
